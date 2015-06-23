@@ -72,11 +72,12 @@ public class SpiderLeg {
     public boolean searchForWord(String searchWord)
     {
         // Defensive coding. This method should only be used after a successful crawl.
-        if(this.htmlDocument == null)
+         if(this.htmlDocument == null)
         {
-            System.out.println("ERROR! Call crawl() before performing analysis on the document");
+            /*System.out.println("ERROR! Call crawl() before performing analysis on the document"); */
+        	 System.out.println(" All the links on the pages visited");
             return false;
-        }
+        } 
         System.out.println("Searching for the word " + searchWord + "...");
         String bodyText = this.htmlDocument.body().text();
         return bodyText.toLowerCase().contains(searchWord.toLowerCase());
