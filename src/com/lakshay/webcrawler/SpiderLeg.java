@@ -71,7 +71,7 @@ public class SpiderLeg {
      */
     public int searchForWord(String searchWord)
     {
-    	 int count = 0;
+    	 //int count = 0;
         // Defensive coding. This method should only be used after a successful crawl.
          if(this.htmlDocument == null)
         {
@@ -81,14 +81,21 @@ public class SpiderLeg {
         } 
         System.out.println("Searching for the word " + searchWord + "...");
         String bodyText = this.htmlDocument.body().text();
-        while (bodyText.toLowerCase().contains(searchWord.toLowerCase())){			//this loop runs into an infinite loop, don't know why? :(
+        int Index = bodyText.toLowerCase().indexOf(searchWord);
+        if(Index == -1){
+        	return 0;
+        }
+        else{
+        	return 1;
+        }
+        /*while (bodyText.toLowerCase().contains(searchWord.toLowerCase())){			//this loop runs into an infinite loop, don't know why? :(
         	System.out.println("lakshay");
-        	++count;
+        	++count; 
         }
         if(count!=0){
         	return count; }
         	else{
-        		return 0;}
+        		return 0;} */
         }
         //return bodyText.toLowerCase().contains(searchWord.toLowerCase());
     
