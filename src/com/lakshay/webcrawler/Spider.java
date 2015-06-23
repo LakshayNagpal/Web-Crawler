@@ -10,7 +10,6 @@ public class Spider {
 	private static final int MAX_PAGES_TO_SEARCH = 10;
 	private Set<String> pagesVisited = new HashSet<String>();
 	private List<String> pagesToVisit = new LinkedList<String>();
-	private int count=0;
 	
 	/**
 	   * Our main launching point for the Spider's functionality. Internally it creates spider legs
@@ -41,10 +40,9 @@ public class Spider {
 			
 			leg.crawl(CurrentUrl);
 			
-			boolean success = leg.searchForWord(searchWord);
-			if(success){
-				++count;
-				System.out.println(String.format("**Success** Word %s found at %s for %d time", searchWord, CurrentUrl, count));
+			int success = leg.searchForWord(searchWord);
+			if(success!=0){
+				System.out.println(String.format("**Success** Word %s found at %s", searchWord, CurrentUrl));
 				
 			}
 			

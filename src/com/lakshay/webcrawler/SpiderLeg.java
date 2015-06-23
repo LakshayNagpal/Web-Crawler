@@ -69,19 +69,29 @@ public class SpiderLeg {
      *            - The word or string to look for
      * @return whether or not the word was found
      */
-    public boolean searchForWord(String searchWord)
+    public int searchForWord(String searchWord)
     {
+    	 int count = 0;
         // Defensive coding. This method should only be used after a successful crawl.
          if(this.htmlDocument == null)
         {
             /*System.out.println("ERROR! Call crawl() before performing analysis on the document"); */
         	 System.out.println(" All the links on the pages visited");
-            return false;
+            return 0;
         } 
         System.out.println("Searching for the word " + searchWord + "...");
         String bodyText = this.htmlDocument.body().text();
-        return bodyText.toLowerCase().contains(searchWord.toLowerCase());
-    }
+        while (bodyText.toLowerCase().contains(searchWord.toLowerCase())){			//this loop runs into an infinite loop, don't know why? :(
+        	System.out.println("lakshay");
+        	++count;
+        }
+        if(count!=0){
+        	return count; }
+        	else{
+        		return 0;}
+        }
+        //return bodyText.toLowerCase().contains(searchWord.toLowerCase());
+    
 
 
     public List<String> getLinks()
